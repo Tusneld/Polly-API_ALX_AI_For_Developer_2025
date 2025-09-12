@@ -24,6 +24,8 @@ Polly-API/
 │   ├── routes.py
 │   └── schemas.py
 ├── main.py
+├── register_user.py
+├── fetch_polls.py
 ├── requirements.txt
 └── README.md
 ```
@@ -184,6 +186,39 @@ The API will be available at `http://127.0.0.1:8000`.
 
 - **Endpoint:** `DELETE /polls/{poll_id}`
 - **Headers:** `Authorization: Bearer <access_token>`
+
+## Client Functions
+
+The project includes Python client functions to interact with the API:
+
+### register_user.py
+
+Provides a `register_user()` function to register new users programmatically:
+
+```python
+from register_user import register_user
+
+# Register a new user
+result = register_user("newuser", "password123")
+if result:
+    print(f"User registered successfully: {result}")
+```
+
+### fetch_polls.py
+
+Provides functions to fetch poll data with pagination support:
+
+```python
+from fetch_polls import fetch_polls, fetch_all_polls
+
+# Fetch polls with pagination
+polls = fetch_polls(skip=0, limit=10)
+print(f"Retrieved {len(polls)} polls")
+
+# Fetch all polls automatically
+all_polls = fetch_all_polls()
+print(f"Total polls: {len(all_polls)}")
+```
 
 ## Interactive API Docs
 
